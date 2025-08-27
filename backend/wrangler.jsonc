@@ -3,7 +3,4 @@
   "name": "medium-blog-backend",
   "main": "src/index.ts",
   "compatibility_date": "2025-08-25",
-  "vars": {
-    "DATABASE_URL": "prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RfaWQiOjEsInNlY3VyZV9rZXkiOiJza19qLS1IWmVSR2JILXhGVUtFVGRwUEEiLCJhcGlfa2V5IjoiMDFLM0dIN0ZXUldCRDA4OURQWTVTN1o4NkIiLCJ0ZW5hbnRfaWQiOiIwOWMyYzQxNzhjMjM3ZGM3NDAzNDEzZTFjNWYyYjRlNDY0YTIzYjc0M2Y1ZDYzZDhiYjcyNGEyMWFlNjZiMDY1IiwiaW50ZXJuYWxfc2VjcmV0IjoiNTBjNTBiMTktMzdmYy00ZGUxLTgwOTEtYzhjMGM0Yjc1ODlmIn0.0rAfE9Ly1HuS1z4Tvl7NYiBQ4mEIN0V0IwtrO86qT8w"    
-  }
 }
