@@ -1,27 +1,21 @@
 import { Hono } from "hono";
+import { Env, Variables } from "./types";
+import { corsMiddleware } from "./middlewares/corsMiddleware";
+import { authRoutes } from "./routes/authRoutes";
+import { blogRoutes } from "./routes/blogRoutes";
 
-const app = new Hono();
+const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
-app.post("/api/v1/signup", (c) => {
-  return c.text("signup route");
+app.use("*", corsMiddleware);
+
+app.all("/", (c) => {
+  return c.json({
+    message: "Medium Blog API - Cloudflare Worker",
+    status: "heathy",
+  });
 });
 
-app.post("/api/v1/sigin", (c) => {
-  return c.text("signin route");
-});
-
-app.get("/api/v1/blog/:id", (c) => {
-  const id = c.req.param("id");
-  console.log(id);
-  return c.text("get blog route");
-});
-
-app.post("/api/v1/blog", (c) => {
-  return c.text("blog post route");
-});
-
-app.put("/api/v1/blog", (c) => {
-  return c.text("blog update route");
-});
+app.route("api/v1", authRoutes);
+app.route("api/v1", blogRoutes);
 
 export default app;
