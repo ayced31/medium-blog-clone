@@ -11,6 +11,10 @@ export const signinSchema = z.object({
   password: z.string().min(1, "Password is required"),
 });
 
+export const getBlogSchema = z.object({
+  id: z.uuid("Invalid blog ID"),
+});
+
 export const createBlogSchema = z.object({
   title: z.string().min(1, "Title is required"),
   content: z.string().min(1, "Content is required"),
@@ -27,5 +31,6 @@ export const updateBlogSchema = z.object({
 
 export type SignupInput = z.infer<typeof signupSchema>;
 export type SigninInput = z.infer<typeof signinSchema>;
+export type GetBlogInput = z.infer<typeof getBlogSchema>;
 export type CreateBlogInput = z.infer<typeof createBlogSchema>;
 export type UpdateBlogInput = z.infer<typeof updateBlogSchema>;
