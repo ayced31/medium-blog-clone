@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 import { Env, Variables } from "./types";
 import { corsMiddleware } from "./middlewares/corsMiddleware";
+import { checkDbConnection } from "./service/prismaService";
 import { authRoutes } from "./routes/authRoutes";
 import { blogRoutes } from "./routes/blogRoutes";
-import { checkDbConnection } from "./service/prismaService";
 
 const app = new Hono<{ Bindings: Env; Variables: Variables }>();
 
