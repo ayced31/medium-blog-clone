@@ -20,3 +20,9 @@ export interface SignupResponse {
   message: string;
   token: string;
 }
+
+export interface SigninResponse {
+  messaege: string;
+  name: string;
+  token: string;
+}
