@@ -9,6 +9,7 @@ import {
 } from "../validators/schemas";
 import { getBlog, createBlog, updateBlog } from "../controllers/blogController";
 import { createPrismaClient } from "../service/prismaService";
+import { rateLimits } from "../middlewares/rateLimitMiddleware";
 
 export const blogRoutes = new Hono<{ Bindings: Env; Variables: Variables }>();
 
@@ -16,6 +17,7 @@ blogRoutes.use("*", authMiddleware);
 
 blogRoutes.get(
   "/blog/:id",
+  rateLimits.general,
   zValidator("param", getBlogSchema, (result, c) => {
     if (!result.success) return c.json({ message: "Invalid blog ID" }, 411);
   }),
@@ -27,6 +29,7 @@ blogRoutes.get(
 
 blogRoutes.post(
   "/blog",
+  rateLimits.blogWrite,
   zValidator("json", createBlogSchema, (result, c) => {
     if (!result.success) {
       return c.json({ message: "Incorrect inputs" }, 411);
@@ -41,6 +44,7 @@ blogRoutes.post(
 
 blogRoutes.put(
   "/blog/:id",
+  rateLimits.blogWrite,
   zValidator("json", updateBlogSchema, (result, c) => {
     if (!result.success) {
       return c.json({ message: "Incorrect inputs" }, 411);

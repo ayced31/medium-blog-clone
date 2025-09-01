@@ -1,4 +1,5 @@
 import type { PrismaClient } from "@prisma/client/edge";
+import type { Context } from "hono";
 
 export interface Env {
   DATABASE_URL: string;
@@ -6,7 +7,7 @@ export interface Env {
 }
 
 export interface Variables {
-  userId: String;
+  userId: string;
   prisma: PrismaClient;
 }
 
@@ -22,7 +23,25 @@ export interface SignupResponse {
 }
 
 export interface SigninResponse {
-  messaege: string;
+  message: string;
   name: string;
   token: string;
+}
+
+export interface RateLimitConfig {
+  windowMs: number;
+  maxRequests: number;
+  keyGenerator?: (c: Context) => string;
+  skipSuccessfulRequests?: boolean;
+  skipFailedRequests?: boolean;
+}
+
+export interface RateLimitEntry {
+  count: number;
+  resetTime: number;
+}
+
+export interface ApiError extends Error {
+  status?: number;
+  code?: string;
 }

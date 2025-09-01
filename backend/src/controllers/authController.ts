@@ -72,7 +72,7 @@ export async function signin(
     const token = await generateToken(user.id, c.env.JWT_SECRET);
 
     const response: SigninResponse = {
-      messaege: "User signed in successfully",
+      message: "User signed in successfully",
       name: user.name,
       token: token,
     };

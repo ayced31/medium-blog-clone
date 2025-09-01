@@ -4,11 +4,13 @@ import { zValidator } from "@hono/zod-validator";
 import { signinSchema, signupSchema } from "../validators/schemas";
 import { createPrismaClient } from "../service/prismaService";
 import { signup, signin } from "../controllers/authController";
+import { rateLimits } from "../middlewares/rateLimitMiddleware";
 
 export const authRoutes = new Hono<{ Bindings: Env; Variables: Variables }>();
 
 authRoutes.post(
   "/signup",
+  rateLimits.auth,
   zValidator("json", signupSchema, (result, c) => {
     if (!result.success) {
       return c.json({ message: "Incorrect inputs" }, 411);
@@ -23,6 +25,7 @@ authRoutes.post(
 
 authRoutes.post(
   "/signin",
+  rateLimits.auth,
   zValidator("json", signinSchema, (result, c) => {
     if (!result.success) {
       return c.json({ message: "Incorrect inputs" }, 411);
