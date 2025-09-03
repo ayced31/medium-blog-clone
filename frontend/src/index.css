@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 leading-relaxed;
+    margin: 0;
+    padding: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .medium-container {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .medium-typography {
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+  
+  .medium-sans {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .medium-hero-title {
+    @apply text-5xl md:text-6xl lg:text-8xl font-normal leading-tight tracking-tight text-gray-900;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    letter-spacing: -0.05em;
+  }
+  
+  .medium-hero-subtitle {
+    @apply text-xl md:text-2xl text-gray-600 leading-relaxed;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+  
+  .medium-button-primary {
+    @apply bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 font-medium text-base;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .medium-button-secondary {
+    @apply border border-gray-900 text-gray-900 px-8 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-200 font-medium text-base;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .medium-nav-link {
+    @apply text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}

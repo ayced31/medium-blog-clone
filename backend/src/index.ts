@@ -30,9 +30,9 @@ app.all("/", rateLimits.public, async (c) => {
 });
 
 // Route modules
+app.route("api/v1", publicRoutes);
 app.route("api/v1", authRoutes);
 app.route("api/v1", blogRoutes);
 app.route("api/v1", userRoutes);
-app.route("api/v1", publicRoutes);
 
 export default app;
