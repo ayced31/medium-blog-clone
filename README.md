@@ -53,7 +53,6 @@ medium-blog/
 │   ├── index.html          # HTML template
 │   ├── package.json        # Frontend dependencies
 │   └── vite.config.ts      # Vite configuration
-└── CLAUDE.md               # Developer instructions
 ```
 
 ## Tech Stack
@@ -138,7 +137,7 @@ Backend will be running at `http://localhost:8787`
    npm run dev
    ```
 
-Frontend will be running at `http://localhost:5173`
+Frontend will be running at `http://localhost:5174`
 
 ## API Endpoints
 
@@ -195,6 +194,32 @@ Frontend will be running at `http://localhost:5173`
 - **Input Validation**: Zod schemas validate all inputs
 - **CORS Protection**: Configured for cross-origin requests
 - **SQL Injection Protection**: Prisma ORM parameterized queries
+
+## Troubleshooting
+
+### Common Issues
+
+1. **CORS Errors**: 
+   - Ensure backend CORS middleware includes your frontend URL
+   - Default ports: Backend (8787), Frontend (5174)
+
+2. **Database Connection Issues**:
+   - Verify `DATABASE_URL` and `DIRECT_URL` in `.env`
+   - Run `npx prisma migrate dev` to apply migrations
+   - Check database connectivity
+
+3. **React/Recoil Compatibility**:
+   - Use React 18.2.0 (not React 19) for Recoil compatibility
+   - Clear browser cache if experiencing stale API calls
+
+4. **Wrangler Version Issues**:
+   - Use Wrangler 4.33.2+ for latest compatibility
+   - Update with `npm install wrangler@4.33.2`
+
+5. **API Endpoint Mismatches**:
+   - Frontend calls `/api/v1/public/blogs`
+   - Backend serves at `/api/v1/public/blogs`
+   - Clear browser cache if seeing wrong endpoints
 
 ## Deployment
 
